@@ -11,7 +11,7 @@ var Search = React.createClass({
   // saveArticle:function(data){
   //   helpers.savedArticle(data).then(function(data){
   //       console.log("updated");
-  //   })
+  //   });
   // },
   componentDidUpdate: function() {
     // console.log(this.state.yearStart);
@@ -22,6 +22,8 @@ var Search = React.createClass({
               /* <button 
               onClick= {this.saveArticle(this.item)}
               aria-hidden="true"> </button> */
+
+
                
 
   // setTerm: function(term, Start, End) {
@@ -31,33 +33,47 @@ var Search = React.createClass({
 
   // },
 
-  renderResults: function(data){
-    data.map((item,i) =>{ 
-      console.log("line 36 results", item.web_url);
-      return
-      <div className="col-md-3 col-sm-6">
-        <div key= {i} className="panel panel-default">
-          <div className="panel-body">
+  // renderResults: function(data){
+  //   data.map((item,i) =>{ 
+  //     console.log("line 36 results", item.web_url);
+  //     return
+  //     <div className="col-md-3 col-sm-6">
+  //       <div key= {i} className="panel panel-default">
+  //         <div className="panel-body">
           
-            <p>{item.headline.print_headline}</p>
-            <p>{item.web_url}</p>
-          </div>
-        </div>
-      </div>
+  //           <p>{item.headline.print_headline}</p>
+  //           <p>{item.web_url}</p>
+  //         </div>
+  //       </div>
+  //     </div>
       
-      });
-  },
+  //     });
+  // },
 
   // Here we render the component
   render: function() {
     return (
-      <div className="container">
+        <div className="container">
+      
+        
 
-        <div className="row">
-          {this.renderResults(this.props.results)}
-        </div>
-
+          {/* Here we use a map function to loop through an array in JSX */}
+          {this.props.results.map(function(item, i) {
+            return (
+              <div key={i} className="panel panel-default">
+            <div className="panel-heading">
+            <h3 className="panel-title text-center">{item.headline.print_headline}</h3>
+            </div>
+            <div className="panel-body text-center">
+              <a href= {item.web_url}> {item.web_url}</a>
+              <button  className="btn btn-primary btn-lg">Saved</button>
+              </div>
+              </div>
+            );
+          })}
+       
       </div>
+
     );
   }
 });
