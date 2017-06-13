@@ -57,10 +57,10 @@ var helper = {
     return axios.get("/api");
   },
 
-  // savedArticle: function(data){
-  //   return axios.post("/savedArticle", {title: data.headline.print_headline, url: data.web_url, date: data.pub_date})
+  savedArticle: function(data1, data2, data3){
+    return axios.post("/savedArticle", {title: data1, url: data2, date: data3})
 
-  // }
+  }
 
   // This function posts new searches to our database.
   // postHistory: function(data) {
