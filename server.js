@@ -56,7 +56,7 @@ app.get("/", function(req, res) {
 // This is the route we will send GET requests to retrieve our most recent search data.
 // We will call this route the moment our page gets rendered
 // the route /api is called and passed to from helpers.js file (3)
-app.get("/api", function(req, res) {
+app.get("/savedArticles", function(req, res) {
 
   // We will find all the records, sort it in descending order, then limit the records to 5
   // do the function and then use mongo db to use the defined schema and sort it by the date
@@ -74,8 +74,14 @@ app.get("/api", function(req, res) {
 });
 
 // This is the route we will send POST requests to save each search.
+app.use((req,res,next)=>console.log("Someting", next()));
 app.post("/savedArticle", function(req, res) {
+
   console.log("BODY: " + req.body);
+  console.log("BODY: " + req.body.title);
+  console.log("BODY: " + req.body.date);
+  console.log("BODY: " + req.body.url);
+
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time

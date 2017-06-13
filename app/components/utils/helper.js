@@ -58,7 +58,9 @@ var helper = {
   },
 
   savedArticle: function(data1, data2, data3){
-    return axios.post("/savedArticle", {title: data1, url: data2, date: data3})
+    console.log("line 61", data1, data2, data3);
+
+    return axios.post("/savedArticle", {title: data1, url: data2, date: data3});
 
   }
 

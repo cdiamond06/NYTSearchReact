@@ -18,7 +18,7 @@ var Search = React.createClass({
   saveArticle:function(data1, data2, data3){
     helpers.savedArticle(data1, data2, data3).then(function(data){
         console.log("updated");
-    });
+    }).catch(err=> console.log(err));
   },
               /* <button 
               onClick= {this.saveArticle(this.item)}
@@ -59,7 +59,7 @@ var Search = React.createClass({
         
 
           {/* Here we use a map function to loop through an array in JSX */}
-          {this.props.results.map(function(item, i) {
+          {this.props.results.map((item, i)=> {
             return (
               <div key={i} className="panel panel-default">
             <div className="panel-heading">
@@ -67,11 +67,11 @@ var Search = React.createClass({
             </div>
             <div className="panel-body text-center">
               <a href= {item.web_url}> {item.web_url}</a>
-              <button onClick={this.saveArticle(item.headline.print_headlint, item.web_url, item.pub_date)} className="btn btn-primary btn-lg">Saved</button>
+              <button onClick={()=>this.saveArticle(item.headline.print_headline, item.web_url, item.pub_date)} className="btn btn-primary btn-lg">Saved</button>
               </div>
               </div>
             );
-          }.bind(this))}
+          })}
        
       </div>
 
