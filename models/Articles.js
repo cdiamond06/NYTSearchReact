@@ -11,7 +11,7 @@ var ArticlesSchema = new Schema({
   },
   saved: {
     type: Boolean,
-    default: false
+    default: true
   },
   // Date is the date of the model when created
   date: {
