@@ -75,6 +75,7 @@ app.get("/savedArticles", function(req, res) {
 
 // This is the route we will send POST requests to save each search.
 app.use((req,res,next)=>console.log("Someting", next()));
+
 app.post("/savedArticle", function(req, res) {
 
   console.log("BODY: " + req.body);

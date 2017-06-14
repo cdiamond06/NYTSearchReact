@@ -1,35 +1,70 @@
 // Include React
 var React = require("react");
 
+var helpers = require("../utils/helper");
+
+// var something;
+
 var Saved = React.createClass({
+
+
+
+  getInitialState: function() {
+    return { searchTerm: "", yearStart: "", yearEnd:"", results: [] };
+  },
+
+  componentDidMount: function(){
+    helpers.getArticle().then(function(data){
+      // console.log(data.data);
+      var data = data.data;
+      // console.log(data);
+      this.setState({results: data});
+      console.log("results", data)
+      // something = data;
+      // console.log(something);
+
+      // this.setState({this.state.searchTerm: data})
+    }.bind(this));
+  },
+
+  componentDidUpdate: function() {
+    // console.log(this.state.yearStart);
+    // console.log(this.state.yearEnd);
+    console.log("componentDidUpdate");
+    // Run the query for the address
+  },
+  saveArticle:function(data1, data2, data3){
+    helpers.savedArticle(data1, data2, data3).then(function(data){
+        console.log("updated");
+    }).catch(err=> console.log(err));
+  },
+
+
 
   // Here we render the component
   render: function() {
-
     return (
+        <div className="container">
+      
+        
 
-      <div className="container">
-
-        <div className="row">
-
-          <div className="col-lg-12">
-
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h3 className="panel-title">Movie Info</h3>
-              </div>
-              <div className="panel-body">
-                <p><strong>Title:</strong> Space Jam </p>
-                <p><strong>Year:</strong> 1996</p>
-                <p><strong>Director:</strong> Joe Pytka</p>
-                <p><strong>Stars:</strong> Michael Jordan, Wayne Knight, Theresa Randle </p>
-              </div>
+          {/* Here we use a map function to loop through an array in JSX */}
+            {this.state.results.map((item, i)=> {
+            return (
+              <div key={i} className="panel panel-default">
+            <div className="panel-heading">
+            <h3 className="panel-title text-center">{item.date}</h3>
             </div>
-
-          </div>
-
-        </div>
+            <div className="panel-body text-center">
+              <a href= {item.url}> {item.title}</a>
+                <button onClick={()=>this.saveArticle(item.headline.print_headline, item.web_url, item.pub_date)} className="btn btn-primary btn-lg">Saved</button>
+              </div>
+              </div>
+            );
+          })}
+       
       </div>
+
     );
   }
 });

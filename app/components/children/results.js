@@ -17,6 +17,7 @@ var Search = React.createClass({
   },
   saveArticle:function(data1, data2, data3){
     helpers.savedArticle(data1, data2, data3).then(function(data){
+      console.log(data);
         console.log("updated");
     }).catch(err=> console.log(err));
   },

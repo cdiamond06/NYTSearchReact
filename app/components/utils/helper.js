@@ -52,9 +52,9 @@ var helper = {
   },
 
   // This function hits our own server to retrieve the record of query results
-  getHistory: function() {
+  getArticle: function() {
     // go to the server function (2) go to server file
-    return axios.get("/api");
+    return axios.get("/savedArticles");
   },
 
   savedArticle: function(data1, data2, data3){
