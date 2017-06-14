@@ -13,21 +13,21 @@ var Main = React.createClass({
 
     return (
     <div className="container">  
-      <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <a className="navbar-brand" href="#">Navbar</a>
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav">
-      <li className="nav-item active">
-            <Link to="/saved"><button className="btn btn-primary btn-lg">Saved</button></Link>
+
+  <nav className="navbar navbar-inverse">
+  <div className="container-fulid">
+  <div className="navbar-header">
+    <a className="navbar-brand" href="#">NewYorkTimes</a>
+  </div>
+    <ul className="nav navbar-nav">
+      <li>
+           <a><Link to="/saved">Saved</Link></a>
       </li>
-      <li className="nav-item active">
-            <Link to="/search"><button className="btn btn-danger btn-lg">Search</button></Link>
+      <li>
+            <a><Link to="/search">Search</Link></a>
       </li>      
     </ul>
-  </div>
+    </div>
 </nav>
 
         <div className="row">
@@ -37,7 +37,7 @@ var Main = React.createClass({
           
         </div>
 
-      </div>
+</div>
     );
   }
 });
