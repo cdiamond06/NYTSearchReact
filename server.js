@@ -103,6 +103,21 @@ app.post("/savedArticle", function(req, res) {
   });
 });
 
+app.post("/deleteArticle", function(req, res){
+  Articles.remove({
+    "title": req.body.title
+  }, function(error, removed){
+    if(error){
+      console.log(error);
+      res.send(error);
+    }
+    else{
+      console.log(removed);
+      res.send(removed);
+    }
+  })
+})
+
 // -------------------------------------------------
 
 // Listener

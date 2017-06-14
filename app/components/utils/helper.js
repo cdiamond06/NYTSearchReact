@@ -57,6 +57,10 @@ var helper = {
     return axios.get("/savedArticles");
   },
 
+  deleteArticle: function(data1, data2, data3){
+    return axios.post("/deleteArticle", {title: data1, url: data2, date: data3});
+  },
+
   savedArticle: function(data1, data2, data3){
     console.log("line 61", data1, data2, data3);
 

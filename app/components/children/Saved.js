@@ -33,10 +33,15 @@ var Saved = React.createClass({
     console.log("componentDidUpdate");
     // Run the query for the address
   },
-  saveArticle:function(data1, data2, data3){
-    helpers.savedArticle(data1, data2, data3).then(function(data){
+  deleteArticle:function(data1, data2, data3){
+    helpers.deleteArticle(data1, data2, data3).then((data) =>{
         console.log("updated");
-    }).catch(err=> console.log(err));
+    }).then(helpers.getArticle().then((data)=>{
+      var data = data.data;
+      this.setState({results: data});
+      console.log("results", data);
+
+    }));
   },
 
 
@@ -45,8 +50,6 @@ var Saved = React.createClass({
   render: function() {
     return (
         <div className="container">
-      
-        
 
           {/* Here we use a map function to loop through an array in JSX */}
             {this.state.results.map((item, i)=> {
@@ -57,7 +60,7 @@ var Saved = React.createClass({
             </div>
             <div className="panel-body text-center">
               <a href= {item.url}> {item.title}</a>
-                <button onClick={()=>this.saveArticle(item.headline.print_headline, item.web_url, item.pub_date)} className="btn btn-primary btn-lg">Saved</button>
+                <button onClick={()=>this.deleteArticle(item.title, item.url, item.date)} className="btn btn-primary btn-lg">Delete</button>
               </div>
               </div>
             );
