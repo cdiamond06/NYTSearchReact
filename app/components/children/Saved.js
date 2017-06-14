@@ -60,7 +60,7 @@ var Saved = React.createClass({
             </div>
             <div className="panel-body text-center">
               <a href= {item.url}> {item.title}</a>
-                <button onClick={()=>this.deleteArticle(item.title, item.url, item.date)} className="btn btn-primary btn-lg">Delete</button>
+                <button onClick={()=>this.deleteArticle(item.title, item.url, item.date)} className="btn btn-danger btn-lg">Delete</button>
               </div>
               </div>
             );
